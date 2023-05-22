@@ -8,11 +8,6 @@
     margin-bottom:
       20px; 
   }
-  .form > input, .form > button {
-    padding: 3%;
-    margin-bottom: 20px;
-    border-radius: 10px;
-  }
 
   .form > button{
     width: 60%;
@@ -21,6 +16,11 @@
 
   @media screen and (min-width: 765px){
     .form{
-      width: 60%;
+      width: 40%;
+    }
+   .form > input, .form > button{
+    padding:1.2%;
+    font-size: 1.6rem;
+    border:0.2px solid var(--dark);
     }
   }
