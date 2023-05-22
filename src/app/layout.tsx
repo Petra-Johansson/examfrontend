@@ -15,7 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>My Exam-App</title>
+      </head>
+      <body className={inter.className}>
+        <div className='header'>
+          <nav><ul><li>hej</li></ul></nav>
+        </div>{children}</body>
     </html>
   )
 }
