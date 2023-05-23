@@ -1,6 +1,85 @@
-.container{
+.main {
     display: flex;
     flex-direction: column;
+}
+
+.main h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    color: var(--blue);
+    font-weight: bolder;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.card p {
+    margin: 10px 0;
+    text-transform: capitalize;
+    font-size: 1.3em;
+}
+
+.profilePic {
+    border-radius: 50px;
+    background-color: var(--blue);
+    width: 40px;
+    height: 40px;
     margin: 0 auto;
-   padding:30px;
+}
+
+
+.updateBtn {
+    background-color: var(--blue);
+    margin: 10px 0;
+    color: var(--light);
+}
+
+.blueBtn {
+    background-color: var(--blue);
+}
+
+.redBtn {
+    background-color: var(--red);
+}
+
+.linkSection {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    width: 60%;
+    margin: 20px auto;
+}
+
+.profileLinks {
+    margin-bottom: 20px;
+    color: var(--light);
+}
+
+@media screen and (min-width: 600px) {
+
+    .card {
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .updateBtn {
+        width: 30%;
+        margin: 0 auto;
+        padding:1%;
+    }
+
+    .linkSection {
+        margin-top: 60px;
+        width: 50%;
+    }
+
+    .profileLinks, .updateBtn{
+        font-size: 1.2em;
+    }
 }
