@@ -1,3 +1,15 @@
+'use client'
+import { useRouter } from "next/navigation";
+
+
 export default function Page() {
-    return <h1>User route!</h1>;
+  const router=useRouter();
+
+    return (
+    <>
+    <h2>Hey , this is your profile</h2>
+  
+    </>
+    )
+    ;
   }
