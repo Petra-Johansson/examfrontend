@@ -1,3 +1,4 @@
+import Header from '@/components/header/header'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -15,7 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>My Exam-App</title>
+      </head>
+      <body className={inter.className}>
+        <div className='header'>
+          <Header/>
+        </div>{children}</body>
     </html>
   )
 }
