@@ -32,8 +32,8 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     };
     return (
         <>
-            <h2 className={styles.formheader}>Login to continue</h2>
-            <p className={styles.formparagraph}>Not registered? <span> <Link href="#"> Sign up here!</Link></span></p>
+            <h2 className={styles.formHeader}>Login to continue</h2>
+            <p className={styles.formParagraph}>Not registered? <span> <Link href="#"> Sign up here!</Link></span></p>
                        <form onSubmit={handleSubmit} className={styles.form}>
                 <input type="email" value={email} onChange={handleEmailChange} placeholder="Your Email" />
                 <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />

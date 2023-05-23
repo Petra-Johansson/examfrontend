@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <div className={styles.container}>
             <div className={styles.logo}>
-                <Link href="/">HOMIIIE</Link>
+                <Link href="/">NAMN ELLER LOGO</Link>
             </div>
             <nav className={styles.navbar}>
                 <ul className={styles.navlist}>
@@ -20,7 +20,8 @@ const Navbar = () => {
                         <Link href="#" className={styles.account}>Account</Link>
                         <ul className={styles.dropdownItems}>
                             <li><Link href="/account">Profile</Link></li>
-                            <li><Link href="/feed">Log Out</Link></li>
+                            <li><Link href="/feed">News feed</Link></li>
+                            <li><Link href="/feed">Log In/Out</Link></li> 
                         </ul>
                     </li>
                     <li className={styles.link}><Link href="/about">About</Link></li>

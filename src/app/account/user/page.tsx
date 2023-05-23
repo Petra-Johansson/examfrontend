@@ -18,7 +18,7 @@ export default function Page() {
         <button className={styles.updateBtn}>Update info</button>
       </div>
       <div className={styles.linkSection}>
-      <button className={styles.blueBtn}><Link href="/feed" className={styles.profileLinks}>Go to messageboard</Link></button>
+      <button className={styles.blueBtn}><Link href="/feed" className={styles.profileLinks}>Go to news feed</Link></button>
       <button className={styles.redBtn}> <Link href="#" className={styles.profileLinks}>Log Out</Link></button>
       </div>
     </section>

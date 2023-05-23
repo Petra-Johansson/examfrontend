@@ -1,45 +1,57 @@
-.form{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 0 auto;
-    font-size: 1.4rem;
-    justify-content: center;
-  }
-.formheader{
-    display:flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1.4rem;
+  justify-content: center;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+}
+
+.formParagraph {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 5px 0 20px 0;
+}
+
+.formParagraph>span {
+  margin-left: 9px;
+}
+
+.form button {
+  width: 60%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  background-color: var(--blue);
+  color: var(--light);
+}
+
+.form input {
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 765px) {
+  .form {
+    width: 55%;
   }
 
-  .formparagraph {
-    display:flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 5px 0 20px 0;
-  }
-  .formparagraph>span {
-    margin-left: 9px;
-  }
-  .form > button{
-    width: 60%;
-    margin:  0 auto;
-    font-size: 1.2rem;
-  }
-
-  .form > input {
-    font-size: 1.2rem;
-  }
-  @media screen and (min-width: 765px){
-    .form{
-      width: 55%;
-    }
-   .form > input, .form > button{
-    padding:1.2%;
+  .form input {
+    padding: 1.2%;
     font-size: 1.6rem;
-    border:0.2px solid var(--dark);
-    }
-  
+    border: 0.2px solid var(--dark);
   }
+
+  .form button {
+    width: 40%;
+    padding: 2%;
+  }
+
+}
