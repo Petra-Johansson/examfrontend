@@ -6,7 +6,7 @@ interface PostFormProps { }
 const PostForm: React.FC<PostFormProps> = () => {
     const [title, setTitle] = useState('');
     const [subject, setSubject] = useState('');
-    const [tags, setTags] = useState('');
+    //const [tags, setTags] = useState('');
     const router = useRouter();
 
     const handleSubmit = (event: FormEvent) => {
@@ -22,11 +22,13 @@ const PostForm: React.FC<PostFormProps> = () => {
     };
     return (
         <>
-            <h2>Write a neww post</h2>
+            <h2>Write a new post</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={title} onChange={handleTitleChange} placeholder="Title" />
-                <textarea value={subject} onChange={handleSubjectChange} placeholder="Share somthing!" />
-            </form>
+                <input type="text" value={subject} onChange={handleSubjectChange} placeholder="Share somthing!" />
+           
+           <button type="submit">Add Post</button> 
+           </form>
         </>
     )
 };

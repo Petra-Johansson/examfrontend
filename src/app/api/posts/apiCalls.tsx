@@ -2,11 +2,11 @@ import axios, {AxiosError} from 'axios';
 
 const BASE = 'http://localhost:8080';
 
-export const getPosts = async() =>{
+export const getPosts = async () =>{
     try {
-        const res = await  axios.get(`${BASE}/posts`);
-       console.log(res.data)
-        return res.data.post;
+        const posts = await axios.get(`${BASE}/post`);
+     
+        return posts.data;
     } catch(error){
         if(axios.isAxiosError(error)){
             if(error.response){
@@ -19,4 +19,19 @@ export const getPosts = async() =>{
             throw new Error('Oops something went wrong');
         }
     }
+}
+
+export const addPost = async ()=> {
+
+}
+
+export const getOnePost=()=>{
+
+}
+export const deletePost=()=>{
+
+}
+
+export const updatePost=()=>{
+
 }

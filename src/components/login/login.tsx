@@ -18,6 +18,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
         try {
             const credentials = { email, password };
             const { user } = await userLogin(credentials);
+            console.log(user)
             router.push('/account/user')
         } catch (error) {
             console.log(error)
