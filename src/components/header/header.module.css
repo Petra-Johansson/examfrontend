@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--light);
+    background-color: transparent;
     height: 80px;
     padding: 20px;
     width: 100%;
@@ -38,19 +38,19 @@
 .link {
     font-size: 1rem;
 }
-
+/*
 .link a {
     color: var(--blue);
 }
-
+*/
 .link a:hover {
-    color: var(--dark);
+    color: var(--blue);
 }
 
 .dropdownItems {
     display: none;
     position: absolute;
-    background-color: var(--light);
+    background-color: var(--dark);
     height: fit-content;
     padding: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);

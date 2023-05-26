@@ -1,5 +1,5 @@
 'use client';
-import { getUsers } from "@/app/api/users/apiCalls";
+import { getUsers, userLogin, getProfile } from "@/app/api/users/apiCalls";
 import { useState, useEffect } from "react";
 import styles from './user.module.css';
 
@@ -13,41 +13,55 @@ interface UserCard {
 }
 
 const UserCard: React.FC = () => {
-    const [users, setUsers] = useState<UserCard[]>([]);
+    // const [users, setUsers] = useState<UserCard[]>([]);
+
+    // setting the user-variable to match UserCard interface
+    const [user, setUser] = useState<UserCard | null>(null);
+    /*
+        useEffect(() => {
+            const fetchUser = async () => {
+                try {
+                    const res = await getUsers();
+                    console.log('res:', res)
+                    const fetchedUsers = res.users.map((item : {user: UserCard}) => item.user);
+                    console.log('users:', fetchedUsers)
+                    setUsers(fetchedUsers);
+                } catch (error) {
+                    console.log(error)
+                }
+            };
+            fetchUser();
+    
+        }, []);
+    */
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const getUserProfile = async () => {
             try {
-                const res = await getUsers();
-                console.log('res:', res)
-                const fetchedUsers = res.users.map((item : {user: UserCard}) => item.user);
-                console.log('users:', fetchedUsers)
-                setUsers(fetchedUsers);
+                const userProfile = await getProfile();
+                setUser(userProfile);
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         };
-        fetchUser();
 
+        getUserProfile();
     }, []);
+
+    if (!user) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>
-            {users.length > 0 ? (
-                users.map((user) => (
+            <div className={styles.card} key={user.id}>
+                <img src={user.image} alt="Profile picture" className={styles.profilePic} />
+                <p>name: {user.name}</p>
+                <p>phone: {user.phone}</p>
+                <p>email: {user.email}</p>
+                <button className={styles.updateBtn}>Update info</button>
+            </div>
 
-                    <div className={styles.card} key={user.id}>
-                        <img src={user.image} alt="Profile picture" className={styles.profilePic} />
-                        <p>name: {user.name}</p>
-                        <p>phone: {user.phone}</p>
-                        <p>email: {user.email}</p>
-                        <button className={styles.updateBtn}>Update info</button>
-                    </div>
-                ))
-            )
-                : (
-                    <p> No users available </p>
-                )}
         </>
     );
 

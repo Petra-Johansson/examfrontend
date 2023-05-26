@@ -4,4 +4,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-margin-top: 11rem;}
+  margin-top: 11rem;
+}
+.loadingMain{
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-top: 11rem;
+    background-color: var(--green);
+  }
+}
+.loading{
+  color: var(--light);
+  font-weight: bolder;
+}

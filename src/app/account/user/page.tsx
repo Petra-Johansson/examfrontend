@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation";
 import styles from '../page.module.css';
 import Link from "next/link";
 import UserCard from '@/components/user/user';
-
+import { userLogOut } from '@/app/api/users/apiCalls';
 
 export default function Page() {
-
+const logOut = async ()=> {
+  await userLogOut()
+}
   return (
     <section className={styles.main}>
       <h2>Hey , this is your profile</h2>
@@ -15,7 +17,7 @@ export default function Page() {
       <UserCard/>
       <div className={styles.linkSection}>
       <button className={styles.blueBtn}><Link href="/feed" className={styles.profileLinks}>Go to news feed</Link></button>
-      <button className={styles.redBtn}> <Link href="#" className={styles.profileLinks}>Log Out</Link></button>
+      <button className={styles.redBtn}> <Link href="/" className={styles.profileLinks} onClick={logOut}>Log Out</Link></button>
       </div>
     </section>
   )
