@@ -1,6 +1,4 @@
 :root {
-  --max-width: 1100px;
-
   --light: #fff4e0;
   --dark: #4d4d4d;
   --blue: #146c94;
@@ -15,15 +13,19 @@
 }
 
 body {
-  background-color: var(--light);
-  color: var(--dark);
+  background-color: var(--blue);
+  color: var(--light);
 }
 
 a {
   text-decoration: none;
-  color: var(--blue);
+  color: var(--light);
 }
 
+a:hover{
+  color:var(--dark);
+  font-style: italic;
+}
 li {
   list-style: none
 }

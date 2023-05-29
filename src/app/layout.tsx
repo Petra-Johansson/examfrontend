@@ -1,6 +1,8 @@
 import Header from '@/components/header/header'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import '../../fontawesome';
+import AuthenticationContext from '@/context/AuthenticationContext';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,9 +22,13 @@ export default function RootLayout({
         <title>My Exam-App</title>
       </head>
       <body className={inter.className}>
+          <AuthenticationContext>
         <div className='header'>
           <Header/>
-        </div>{children}</body>
+        </div>
+        {children}
+        </AuthenticationContext>
+        </body>
     </html>
   )
 }
