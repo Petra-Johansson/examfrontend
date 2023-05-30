@@ -1,4 +1,4 @@
-import axios, {AxiosError} from 'axios';
+import axios, { AxiosError } from 'axios';
 
 const BASE = 'http://localhost:8080';
 
@@ -7,12 +7,7 @@ export const userLogin = async (credentials: { email: string; password: string }
     try {
         const { email, password } = credentials;
         const res = await axios.post(`${BASE}/authentication/login`, { email, password }, { withCredentials: true });
-        console.log('response:', res)
-        /*const token = res.data.token;
-        if (res.headers && res.headers['token']) {
-              // Get the 'token' cookie from the response headers
-              const token = res.headers['token'][0].split(';')[0].split('=')[1];
-        */
+       
         if (res.data && res.data.user && res.data.user.token) {
             const token = res.data.user.token;
             // Set the 'Authorization' header with the token for future requests
@@ -24,11 +19,11 @@ export const userLogin = async (credentials: { email: string; password: string }
         }
     } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.errors) {
-          const { email, password } = error.response.data.errors;
-          throw new Error(email || password);
+            const { email, password } = error.response.data.errors;
+            throw new Error(email || password);
         }
         throw new Error('Oops, something went wrong');
-      }
+    }
 };
 export const getProfile = async () => {
     try {

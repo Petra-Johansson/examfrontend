@@ -51,7 +51,7 @@ const UserCard: React.FC = () => {
     }, []);
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <div><p> Hmm, something is wwrong. Please Log In again</p></div>;
     }
 
     return (

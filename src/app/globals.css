@@ -4,6 +4,7 @@
   --blue: #146c94;
   --green: #698269;
   --red: #ad4f4f;
+  --contrast: #E0B2BA;
 }
 
 * {
@@ -22,7 +23,7 @@ a {
   color: var(--light);
 }
 
-a:hover{
+a:hover, a:active, a:focus{
   color:var(--dark);
   font-style: italic;
 }
