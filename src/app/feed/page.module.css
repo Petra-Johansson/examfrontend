@@ -6,12 +6,18 @@
 text-align: center;
 }
 
+.actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .feedCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 20px 0;
   padding: 5px;
-  background-color:var(--blue);
-  color:var(--light);
+  background-color:var(--light);
+  color:var(--dark);
 }
 
 .postInfo {
@@ -25,18 +31,18 @@ text-align: center;
 }
 .cardFooter{
   margin-top: 10px; 
-  border-top: .7px dashed var(--light);
+  border-top: .7px dashed var(--dark);
   display: grid;
   grid-template-columns: 75% 25%;
-
-
 }
-.details {
+.details, .icon {
   font-size: .8em;
   margin-top: 10px;
   margin-left: 5px;
 }
-
+.icon{
+  color: var(--contrast);
+}
 @media screen and (min-width: 900px) {
   .feed {
     width: 75vw;

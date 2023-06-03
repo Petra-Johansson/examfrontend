@@ -9,7 +9,6 @@
 }
 
 
-
 .blueBtn {
     background-color: var(--blue);
 }
@@ -42,7 +41,7 @@
     .updateBtn {
         width: 30%;
         margin: 0 auto;
-        padding:1%;
+        padding: 1%;
     }
 
     .linkSection {
@@ -50,7 +49,8 @@
         width: 50%;
     }
 
-    .profileLinks, .updateBtn{
+    .profileLinks,
+    .updateBtn {
         font-size: 1.2em;
     }
 }

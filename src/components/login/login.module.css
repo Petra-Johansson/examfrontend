@@ -1,13 +1,10 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  margin: 0 auto;
-  font-size: 1.4rem;
-  justify-content: center;
-}
 
-.formHeader {
+.form{
+  width: 100%;
+  display: flex;
+    flex-direction: column;
+}
+.form h2 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -49,9 +46,10 @@
   margin-bottom: 20px;
 }
 
-@media screen and (min-width: 765px) {
+@media screen and (min-width: 600px) {
   .form {
     width: 55%;
+    margin: 0 auto;
   }
 
   .formparagraph {

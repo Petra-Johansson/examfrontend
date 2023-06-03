@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--blue);
+    background-color: transparent;
     height: 80px;
     padding: 20px;
     width: 100%;
@@ -23,6 +23,9 @@
     justify-content: space-between;
 
 }
+.navItem{
+    font-size: 1rem;;
+}
 
 .logo {
     font-size: 3rem;
@@ -34,14 +37,11 @@
     display: inline-block;
 }
 
-.link {
-    font-size: 1rem;
-}
 
 .dropdownItems {
     display: none;
     position: absolute;
-    background-color: var(--blue);
+    background-color: #4d4d4dac;
     height: fit-content;
     padding: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -66,7 +66,8 @@
         padding: 20px;
     }
 
-    .link {
-        font-size: 1.6rem;
+
+    .navItem:hover{
+        text-decoration: underline;
     }
 }

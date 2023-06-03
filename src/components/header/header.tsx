@@ -4,9 +4,8 @@ import Link from 'next/link';
 
 const Header = ()=> {
     return (
-        <>
+        
         <Navbar/>
-    </> 
     )}
 
     export default Header;

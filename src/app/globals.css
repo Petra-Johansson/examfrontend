@@ -1,10 +1,10 @@
 :root {
-  --light: #fff4e0;
+  --light: #faf4e8;
   --dark: #4d4d4d;
   --blue: #146c94;
   --green: #698269;
-  --red: #ad4f4f;
-  --contrast: #E0B2BA;
+  --red: #b84040;
+  --contrast: #fe5f55;
 }
 
 * {
@@ -14,24 +14,25 @@
 }
 
 body {
-  background-color: var(--blue);
+  background-image: linear-gradient(to bottom left, var(--green), var(--light));
   color: var(--light);
 }
 
 a {
   text-decoration: none;
   color: var(--light);
+  cursor: pointer;
+}
+button{
+  cursor: pointer;
 }
 
-a:hover, a:active, a:focus{
-  color:var(--dark);
-  font-style: italic;
-}
 li {
   list-style: none
 }
 
 input,
+textarea,
 button {
   padding: 3%;
   margin-bottom: 20px;
@@ -39,3 +40,7 @@ button {
   border: none;
   box-shadow:0 4px 8px 0 rgba(0,0,0,0.2);
 }
+h3, h4 {
+  color: var(--dark);
+}
+

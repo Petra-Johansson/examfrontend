@@ -25,7 +25,18 @@
 
 
 .updateBtn {
+    width: 60%;
     background-color: var(--blue);
-    margin: 10px 0;
+    margin: 10px auto;
     color: var(--light);
+}
+
+@media screen and (min-width: 600px) {
+
+
+    .updateBtn {
+        width: 30%;
+        margin: 0 auto;
+        padding:1%;
+    }
 }
