@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { sortArrayBy } from "@/utility/sorting";
-import { PostType } from "./post/postcard";
+import { PostType } from "./postcard";
 
 type SortPostsProps = {
   posts: PostType[];
@@ -20,7 +20,7 @@ const SortPosts: React.FC<SortPostsProps> = ({ posts, setPosts }) => {
     setPosts(sortedPosts);
   };
 
-  return <button onClick={handleSort}>Sortera</button>;
+  return <button onClick={handleSort}>Sortera på datum</button>;
 };
 
 export default SortPosts;

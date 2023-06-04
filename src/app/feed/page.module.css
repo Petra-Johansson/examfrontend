@@ -3,15 +3,18 @@
 }
 
 .heading {
-text-align: center;
+  text-align: center;
 }
 
-.actions{
+.actions {
   display: flex;
   justify-content: space-between;
 }
 @media screen and (min-width: 900px) {
   .feed {
     width: 75vw;
+  }
+  .actions > button {
+    padding: 2%;
   }
 }

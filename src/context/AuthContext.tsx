@@ -1,11 +1,13 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import RedirectToLogin from "@/components/redirect";
+import Loading from "@/app/loading";
 
 const BASE = "http://localhost:8080";
 type AuthState = {
   isLoggedIn: boolean;
-} | null;
+};
 
 interface UpdateProfileData {
   name?: string;
@@ -31,6 +33,7 @@ export const AuthContext = createContext<{
   createPost: (title: string, description: string) => Promise<any>;
   getPost: () => Promise<any>;
   likePost: (postId: string) => Promise<any>;
+
   // Include the useAuth hook directly inside AuthContext instead of in a seperate hook-file
   useAuth: () => {
     authState: AuthState;
@@ -54,11 +57,9 @@ export const AuthContext = createContext<{
 
 export function useAuth() {
   const context = useContext(AuthContext);
-
   if (!context) {
     throw Error("useAuth can only be used inside an AuthContextProvider");
   }
-
   return context;
 }
 
@@ -163,10 +164,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setAuthState({ isLoggedIn: false });
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   const createPost = async (
     title: string,
     description: string,
@@ -227,7 +224,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         likePost,
       }}
     >
-      {children}
+      {isLoading ? <Loading /> : children}
     </AuthContext.Provider>
   );
 }

@@ -5,22 +5,19 @@
   padding: 1rem;
   height: 100vh;
 }
-.section{
+.section {
   margin-top: 50px;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
-.actions{
+.actions {
   margin: 30px 0;
 }
-.actions:hover{
- text-decoration: underline;
-
+.actions:hover {
+  text-decoration: underline;
 }
 @media screen and (min-width: 500px) {
-  .section{
-
-    font-size: 1.8rem;
+  .section {
+    font-size: 1.5rem;
   }
-  
 }

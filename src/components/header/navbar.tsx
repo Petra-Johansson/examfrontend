@@ -14,11 +14,11 @@ const Navbar = () => {
       <nav className={styles.navbar}>
         <ul className={styles.navlist}>
           <li className={styles.navItem}>
-            <Link href="/">Hem</Link>
+            <Link href="/">Start</Link>
           </li>
 
           <li className={`${styles.navItem} ${styles.dropdown}`}>
-            <Link href="#" className={styles.account}>
+            <Link href="/account/user" className={styles.account}>
               Konto
             </Link>
             <ul className={styles.dropdownItems}>

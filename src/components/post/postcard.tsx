@@ -71,7 +71,7 @@ const PostCard: React.FC<PostCardProps> = ({ posts }) => {
             <p className={styles.details}>{formatDate(post.createdAt)}</p>
           </div>
           <div className={styles.cardFooter}>
-            <p className={styles.details}>Comments</p>
+            <p className={styles.details}>Kommentarer</p>
             <button
               className={styles.icon}
               type="submit"
