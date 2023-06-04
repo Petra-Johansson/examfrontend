@@ -28,7 +28,7 @@
 }
 
 .logo {
-    font-size: 3rem;
+    font-size: 2em;
     font-weight: bolder;
 }
 
@@ -54,6 +54,10 @@
 }
 
 @media screen and (min-width:760px) {
+
+    .logo{
+        font-size:3em;
+    }
     .navlist {
         width: 70%;
         margin: 0 auto;

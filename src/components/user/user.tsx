@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-
 import styles from "./user.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAt, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "@/hooks/useAuth";
-// defins what we want to get from user to display
+import Link from "next/link";
+import UserUpdateForm from "./userupdate";
+
+// defines what we want to get from user to display
 interface UserCard {
   id: number;
   name: string;
@@ -20,6 +22,14 @@ const UserCard: React.FC = () => {
   const [user, setUser] = useState<UserCard | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [modal, setModal] = useState(false);
+
+  const handleModal = () => {
+    setModal(true);
+  };
+  const handleCloseModal = () => {
+    setModal(false);
+  };
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -28,7 +38,7 @@ const UserCard: React.FC = () => {
         setUser(profileData);
         setIsLoading(false);
       } catch (error) {
-        setError("Failed to fetch profile");
+        setError("Du är inte inloggad");
         setIsLoading(false);
         console.error(error);
       }
@@ -41,24 +51,29 @@ const UserCard: React.FC = () => {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return (
-      <div>
-        <p>{error}</p>
-      </div>
-    );
-  }
-
   if (!user) {
     return (
-      <div>
-        <p>Hmm, något gick fel. Testa att logga in igen.</p>
+      <div className={styles.errorMessage}>
+        <p>Hmm, något gick fel</p>
+        <p>
+          <Link href="/account/login">Logga in här igen!</Link>
+        </p>
       </div>
     );
   }
 
   return (
     <>
+      {error ||
+        (!user && (
+          <div className={styles.errorMessage}>
+            <p>{error}</p>
+            <p>
+              {" "}
+              <Link href="/account/login">Logga in här!</Link>
+            </p>
+          </div>
+        ))}
       <h2>Hej {user.name}, här är din profil</h2>
       <div className={styles.card} key={user.id}>
         <img
@@ -78,7 +93,10 @@ const UserCard: React.FC = () => {
             <FontAwesomeIcon icon={faAt} /> <span>{user.email}</span>
           </p>
         </div>
-        <button className={styles.updateBtn}>Uppdatera information</button>
+        <button className={styles.updateBtn} onClick={handleModal}>
+          Uppdatera information
+        </button>
+        <UserUpdateForm isOpen={modal} isClosed={handleCloseModal} />
       </div>
     </>
   );

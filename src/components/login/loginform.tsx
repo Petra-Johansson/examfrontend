@@ -9,19 +9,18 @@ import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [error, setError] = useState("");
   const login = useLogin();
   const router = useRouter();
 
   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
-    setEmailError("");
+    setError("");
   };
 
   const handleChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
-    setPasswordError("");
+    setError("");
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -30,30 +29,25 @@ function LoginForm() {
       await login(email, password);
       // Login was successful
       router.push("/account/user"); // redirect to dashboard
-    } catch (err) {
-      // Login failed
-      console.error(err);
-      setEmailError("Invalid credentials"); // Set the error message
-      setPasswordError("Invalid credentials"); // Set the error message
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      if (error.response.data.message.includes("email" || "password")) {
+        setError("Fel lösenord eller email");
+      } else {
+        setError("Ojdå, något gick fel. Försök igen!.");
+      }
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <h2>Logga in</h2>
-      {passwordError && (
-        <div className={styles.errorMessage}>
-          <FontAwesomeIcon icon={faTriangleExclamation} />
-          <br />
-          <p>{passwordError}</p>
-        </div>
-      )}
 
-      {emailError && (
+      {error && (
         <div className={styles.errorMessage}>
           <FontAwesomeIcon icon={faTriangleExclamation} />
           <br />
-          <p>{emailError}</p>
+          <p>{error}</p>
         </div>
       )}
       <input

@@ -1,5 +1,5 @@
 "use client";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "../../context/AuthContext";
 import { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./post.module.css";
 
@@ -10,48 +10,55 @@ type PostFormProps = {
 
 const PostForm = ({ isOpen, isClosed }: PostFormProps) => {
   const [title, setTitle] = useState("");
-  const [subject, setSubject] = useState("");
+  const [description, setDescription] = useState("");
   const [titleError, setTitleError] = useState("");
-  const [subjectError, setSubjectError] = useState("");
-  const { getProfile } = useAuth();
+  const [descriptionError, setDescriptionError] = useState("");
+  const { createPost } = useAuth();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    /*const { data } = await getProfile();
-    if (data) {
 
-
-      try {
-      } catch (error: any) {
-        console.log(error.message);
-        if (error.message.includes("title")) {
-          setTitleError(error.message);
-        } else if (error.message.includes("subject")) {
-          setSubjectError(error.message);
-        } else {
-          setSubjectError("An error occurred. Please try again later.");
-        }
+    try {
+      const post = await createPost(title, description);
+    } catch (error: any) {
+      console.log(error.message);
+      if (error.message.includes("title")) {
+        setTitleError(error.message);
+      } else if (error.message.includes("subject")) {
+        setDescriptionError(error.message);
+      } else {
+        setDescriptionError("An error occurred. Please try again later.");
       }
-    } else {
-      console.log("User is not authorized or token is missing");
     }
-    */
   };
 
-  const handleSubject = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setSubject(event.target.value);
-    setSubjectError("");
+  const handleDescription = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(event.target.value);
+    setDescriptionError("");
   };
   const handleTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
     setTitleError("");
   };
+
   return (
     <div className={`${styles.modal} ${isOpen ? styles.open : ""}`}>
       <div className={styles.modalContent}>
         <button className={styles.closeBtn} onClick={isClosed}>
           X
         </button>
+        {titleError && (
+          <div className={styles.errorMessage}>
+            <br />
+            <p>{titleError}</p>
+          </div>
+        )}
+        {descriptionError && (
+          <div className={styles.errorMessage}>
+            <br />
+            <p>{descriptionError}</p>
+          </div>
+        )}
         <h3>Add a post</h3>
 
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -63,13 +70,13 @@ const PostForm = ({ isOpen, isClosed }: PostFormProps) => {
             placeholder="Title"
           />
           <textarea
-            value={subject}
+            value={description}
             required
-            onChange={handleSubject}
+            onChange={handleDescription}
             placeholder="Write your message here!"
           />
-          <button type="submit" onClick={isClosed} className={styles.close}>
-            Post and Close
+          <button type="submit" onClick={isClosed} id={styles.submit}>
+            Skicka post!
           </button>
         </form>
       </div>

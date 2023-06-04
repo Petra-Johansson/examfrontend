@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <Link href="/">HOWDIEDODIII</Link>
+        <Link href="/">HOWDIEDODII</Link>
       </div>
       <nav className={styles.navbar}>
         <ul className={styles.navlist}>
@@ -43,7 +43,7 @@ const Navbar = () => {
           </li>
           <li className={styles.navItem}>
             <Link href="/about" className={styles.onHover}>
-              About
+              Om oss
             </Link>
           </li>
         </ul>

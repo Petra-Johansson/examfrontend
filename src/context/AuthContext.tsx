@@ -7,6 +7,13 @@ type AuthState = {
   isLoggedIn: boolean;
 } | null;
 
+interface UpdateProfileData {
+  name?: string;
+  email?: string;
+  phone?: string;
+  contractNumber?: string;
+  image?: string;
+}
 export const AuthContext = createContext<{
   authState: AuthState;
   login: (email: string, password: string) => Promise<void>;
@@ -20,7 +27,11 @@ export const AuthContext = createContext<{
     contractNumber: string
   ) => Promise<void>;
   getProfile: () => Promise<any>;
-  // Include the useAuth hook directly inside AuthContext
+  updateProfile: (data: UpdateProfileData) => Promise<any>;
+  createPost: (title: string, description: string) => Promise<any>;
+  getPost: () => Promise<any>;
+  likePost: (postId: string) => Promise<any>;
+  // Include the useAuth hook directly inside AuthContext instead of in a seperate hook-file
   useAuth: () => {
     authState: AuthState;
     login: (email: string, password: string) => Promise<void>;
@@ -34,6 +45,10 @@ export const AuthContext = createContext<{
       contractNumber: string
     ) => Promise<void>;
     getProfile: () => Promise<any>;
+    updateProfile: (data: UpdateProfileData) => Promise<any>;
+    createPost: (title: string, description: string) => Promise<any>;
+    getPost: () => Promise<any>;
+    likePost: (postId: string) => Promise<any>;
   };
 } | null>(null);
 
@@ -105,6 +120,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const updateProfile = async (data: UpdateProfileData) => {
+    try {
+      const response = await axios.put(`${BASE}/users`, data, {
+        withCredentials: true,
+      });
+      setAuthState({ isLoggedIn: true });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Oh no, we failed to update your profile");
+    }
+  };
+
   const signup = async (
     name: string,
     email: string,
@@ -139,9 +167,65 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return <div>Loading...</div>;
   }
 
+  const createPost = async (
+    title: string,
+    description: string,
+    tags?: string
+  ) => {
+    try {
+      const response = await axios.post(
+        `${BASE}/posts`,
+        { title, description, tags },
+        { withCredentials: true }
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Faild to create post");
+    }
+  };
+
+  const getPost = async () => {
+    try {
+      const response = await axios.get(`${BASE}/posts`, {
+        withCredentials: true,
+      });
+      setAuthState({ isLoggedIn: true });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Oh no, we faild to fetch any posts");
+    }
+  };
+
+  const likePost = async (postId: string) => {
+    try {
+      const response = await axios.post(
+        `${BASE}/liked-posts/${postId}`,
+        {},
+        { withCredentials: true }
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Faild to like");
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ authState, useAuth, login, getProfile, logout, signup }}
+      value={{
+        authState,
+        useAuth,
+        login,
+        getProfile,
+        updateProfile,
+        logout,
+        signup,
+        createPost,
+        getPost,
+        likePost,
+      }}
     >
       {children}
     </AuthContext.Provider>
