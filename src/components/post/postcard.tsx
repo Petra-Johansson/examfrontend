@@ -4,6 +4,7 @@ import styles from "./post.module.css";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatDate } from "@/utility/formatdate";
+
 interface User {
   name: string;
 }

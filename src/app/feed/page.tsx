@@ -33,13 +33,13 @@ export default function Page() {
   const handleCloseModal = () => {
     setModal(false);
   };
-
+  /*
   const { authState } = useAuth();
 
   if (!authState.isLoggedIn) {
     return <RedirectToLogin />;
   }
-
+*/
   return (
     <>
       <div className={styles.actions}>

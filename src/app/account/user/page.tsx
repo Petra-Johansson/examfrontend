@@ -4,12 +4,13 @@ import Link from "next/link";
 import UserCard from "@/components/user/user";
 import { useAuth } from "@/context/AuthContext";
 import RedirectToLogin from "@/components/redirect";
+import Loading from "@/app/loading";
 
 export default function Page() {
-  const { authState } = useAuth();
+  const { authState, isLoading } = useAuth();
 
-  if (!authState.isLoggedIn) {
-    return <RedirectToLogin />;
+  if (isLoading) {
+    return <Loading />;
   }
 
   return (
@@ -22,7 +23,7 @@ export default function Page() {
           </Link>
         </button>
         <button className={styles.blueBtn}>
-          <Link href="/" className={styles.profileLinks}>
+          <Link href="/account/user/posts" className={styles.profileLinks}>
             Se alla dina posts
           </Link>
         </button>

@@ -12,6 +12,7 @@
 }
 .actions {
   margin: 30px 0;
+  color: var(--dark);
 }
 .actions:hover {
   text-decoration: underline;
