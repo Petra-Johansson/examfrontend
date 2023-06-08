@@ -28,7 +28,7 @@ function LoginForm() {
     try {
       await login(email, password);
       // Login was successful
-      router.push("/account/user"); // redirect to dashboard
+      router.push("/account/user");
     } catch (error: any) {
       console.log(error.response.data.message);
       if (error.response.data.message.includes("email" || "password")) {
@@ -41,7 +41,7 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <h2>Logga in</h2>
+      <h2 className={styles.formHeader}>Logga in</h2>
 
       {error && (
         <div className={styles.errorMessage}>

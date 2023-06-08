@@ -1,10 +1,11 @@
 "use client";
 import styles from "./page.module.css";
 import { useState, useEffect } from "react";
-import SortPosts from "@/components/SortPosts";
-import PostForm from "@/components/post/postform";
+import SortPosts from "@/components/post/SortPosts";
+import PostForm from "@/components/post/PostForm";
 import PostCard, { PostType } from "@/components/post/postcard";
 import { useAuth } from "@/context/AuthContext";
+import RedirectToLogin from "@/components/redirect";
 
 export default function Page() {
   const [modal, setModal] = useState(false);
@@ -36,9 +37,11 @@ export default function Page() {
   return (
     <>
       <div className={styles.actions}>
-        <SortPosts posts={posts} setPosts={setPosts} />
-        <button onClick={handleModal}>Lägg till ny post</button>
+        <button id={styles.addBtn} onClick={handleModal}>
+          Lägg till ny post
+        </button>
         <PostForm isOpen={modal} isClosed={handleCloseModal} />
+        <SortPosts posts={posts} setPosts={setPosts} />
       </div>
 
       <section className={styles.feed}>

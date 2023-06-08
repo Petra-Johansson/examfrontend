@@ -5,22 +5,36 @@
   padding: 1rem;
   height: 100vh;
 }
-.section{
+.section {
   margin-top: 50px;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
-.actions{
-  margin: 30px 0;
+.imgFilter {
+  background-color: rgba(238, 18, 18, 0.72);
+  z-index: 12;
 }
-.actions:hover{
- text-decoration: underline;
+.actions {
+  margin: 30px 0;
+  color: var(--dark);
+}
+.actions:hover {
+  text-decoration: underline;
+}
+.actions a {
+  color: var(--contrast);
+  font-size: 1.6em;
+  font-weight: bolder;
+  margin-top: 20px;
+}
 
+.bgImage {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
 }
 @media screen and (min-width: 500px) {
-  .section{
-
-    font-size: 1.8rem;
+  .section {
+    font-size: 1.5rem;
   }
-  
 }

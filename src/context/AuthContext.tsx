@@ -1,11 +1,12 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import Loading from "@/app/loading";
 
 const BASE = "http://localhost:8080";
 type AuthState = {
   isLoggedIn: boolean;
-} | null;
+};
 
 interface UpdateProfileData {
   name?: string;
@@ -30,7 +31,10 @@ export const AuthContext = createContext<{
   updateProfile: (data: UpdateProfileData) => Promise<any>;
   createPost: (title: string, description: string) => Promise<any>;
   getPost: () => Promise<any>;
+  getUsersPosts: () => Promise<any>;
   likePost: (postId: string) => Promise<any>;
+  isLoading: boolean;
+
   // Include the useAuth hook directly inside AuthContext instead of in a seperate hook-file
   useAuth: () => {
     authState: AuthState;
@@ -48,22 +52,24 @@ export const AuthContext = createContext<{
     updateProfile: (data: UpdateProfileData) => Promise<any>;
     createPost: (title: string, description: string) => Promise<any>;
     getPost: () => Promise<any>;
+    getUsersPosts: () => Promise<any>;
+    isLoading: boolean;
     likePost: (postId: string) => Promise<any>;
   };
 } | null>(null);
 
 export function useAuth() {
   const context = useContext(AuthContext);
-
   if (!context) {
     throw Error("useAuth can only be used inside an AuthContextProvider");
   }
-
   return context;
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [authState, setAuthState] = useState<AuthState>({ isLoggedIn: false });
+  const [authState, setAuthState] = useState<AuthState>({
+    isLoggedIn: false,
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -103,7 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (err) {
       console.error(err);
       setAuthState({ isLoggedIn: false });
-      throw err; // Rethrow the error to be caught in the login form
+      throw err;
     }
   };
 
@@ -163,10 +169,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setAuthState({ isLoggedIn: false });
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   const createPost = async (
     title: string,
     description: string,
@@ -205,10 +207,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         {},
         { withCredentials: true }
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
       throw new Error("Faild to like");
+    }
+  };
+
+  const getUsersPosts = async () => {
+    try {
+      const response = await axios.get(`${BASE}/posts/find-by-user`, {
+        withCredentials: true,
+      });
+      setAuthState({ isLoggedIn: true });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Oh no, we faild to fetch any posts");
     }
   };
 
@@ -224,10 +240,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signup,
         createPost,
         getPost,
+        getUsersPosts,
         likePost,
+        isLoading,
       }}
     >
-      {children}
+      {isLoading ? <Loading /> : children}
     </AuthContext.Provider>
   );
 }

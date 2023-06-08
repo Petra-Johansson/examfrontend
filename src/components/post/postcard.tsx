@@ -4,6 +4,7 @@ import styles from "./post.module.css";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatDate } from "@/utility/formatdate";
+
 interface User {
   name: string;
 }
@@ -38,11 +39,11 @@ const PostCard: React.FC<PostCardProps> = ({ posts }) => {
     };
     fetchPosts();
   }, []);
-
+  /*
   useEffect(() => {
     setPostItems(posts); // Update postItems when posts prop changes
   }, [posts]);
-
+*/
   const handleLike = (postId: string) => async () => {
     try {
       await likePost(postId);
@@ -71,7 +72,7 @@ const PostCard: React.FC<PostCardProps> = ({ posts }) => {
             <p className={styles.details}>{formatDate(post.createdAt)}</p>
           </div>
           <div className={styles.cardFooter}>
-            <p className={styles.details}>Comments</p>
+            <p className={styles.details}>Kommentarer</p>
             <button
               className={styles.icon}
               type="submit"

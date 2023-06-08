@@ -1,14 +1,15 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 import Link from "next/link";
-export default function Home() {
+import styles from "../app/page.module.css";
+
+function RedirectToLogin() {
   return (
     <main className={styles.main}>
-      <h1>Välkommen!</h1>
       <section className={styles.section}>
+        <h2> För att komma åt den här sidan behöver du vara inloggad</h2>
         <div className={styles.actions}>
           <h2>Har du redan ett konto? </h2>
-          <Link href="/account/login">Logga in här!</Link>
+          <Link href="/account/login">Logg in här!</Link>
         </div>
         <div className={styles.actions}>
           <h2>Har du inget konto?</h2>
@@ -18,3 +19,4 @@ export default function Home() {
     </main>
   );
 }
+export default RedirectToLogin;

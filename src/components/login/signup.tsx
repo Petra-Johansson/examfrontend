@@ -70,36 +70,55 @@ function SignupForm() {
       </p>
 
       <form onSubmit={handleSubmit} className={styles.form}>
+        <label>E-mail</label>
+
         <input
           type="email"
           value={email}
           onChange={handleEmailChange}
-          placeholder="Din Email"
+          placeholder="Din e-mail"
+          required
         />
+        <label>Namn</label>
+
         <input
           type="text"
           value={name}
           onChange={handleNameChange}
           placeholder="Ditt namn"
+          required
         />
+        <label>Telefonnummer</label>
+
         <input
           type="text"
           value={phone}
           onChange={handlePhoneChange}
           placeholder="Ditt telefonnummer"
+          required
         />
+        <label>Kontraktsnummer</label>
         <input
           type="text"
           value={contractNo}
           onChange={handleContractNumbChange}
           placeholder="Ditt kontraktsnummer"
         />
-        <input type="file" value={image} onChange={handleImageChange} />
+        <label>Profilbild</label>
+        <input
+          type="file"
+          value={image}
+          onChange={handleImageChange}
+          placeholder="Profilbild"
+        />
+        <label>Lösenord</label>
+
         <input
           type="password"
           value={password}
           onChange={handlePasswordChange}
           placeholder="Lösenord"
+          required
         />
         <button type="submit">Skapa konto</button>
       </form>
