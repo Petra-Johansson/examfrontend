@@ -21,7 +21,6 @@ const UserUpdateForm = ({ isOpen, isClosed }: UserUpdateFormProps) => {
     email: "",
     phone: "",
     contractNumber: "",
-    image: "",
   });
 
   useEffect(() => {
@@ -32,7 +31,6 @@ const UserUpdateForm = ({ isOpen, isClosed }: UserUpdateFormProps) => {
         email: profile.email || "",
         phone: profile.phone || "",
         contractNumber: profile.contractNumber || "",
-        image: profile.image || "",
       });
     })();
   }, []);
@@ -76,7 +74,6 @@ const UserUpdateForm = ({ isOpen, isClosed }: UserUpdateFormProps) => {
             value={formState.contractNumber}
             onChange={handleChange}
           />
-          <input name="image" value={formState.image} onChange={handleChange} />
           <button type="submit" onClick={isClosed} className={styles.close}>
             Uppdatera
           </button>

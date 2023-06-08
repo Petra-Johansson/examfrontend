@@ -84,12 +84,18 @@
 .card .contrNumb {
   font-size: 0.7em;
 }
-.profilePic {
-  border-radius: 50px;
+.imageContainer {
+  border-radius: 5px;
   background-color: var(--blue);
-  width: 40px;
-  height: 40px;
-  margin: 0 auto;
+  align-self: center;
+  width: 110px;
+  height: 110px;
+  display: inline-block;
+}
+.profilePic {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
 }
 
 .updateBtn {
@@ -101,11 +107,17 @@
 
 @media screen and (min-width: 600px) {
   .card {
+    display: flex;
+    flex-direction: row;
     width: 60%;
+    height: fit-content;
   }
 
   .updateBtn {
     width: 40%;
     padding: 2%;
+  }
+  .infoContainer {
+    margin: 15px;
   }
 }

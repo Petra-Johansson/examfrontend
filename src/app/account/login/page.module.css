@@ -1,5 +1,12 @@
-.formContainer{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.actions {
+  margin: 40px auto;
+  font-size: 1.2em;
+}
+.actions a {
+  color: var(--contrast);
 }

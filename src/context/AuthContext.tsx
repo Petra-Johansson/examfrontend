@@ -109,7 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (err) {
       console.error(err);
       setAuthState({ isLoggedIn: false });
-      throw err; // Rethrow the error to be caught in the login form
+      throw err;
     }
   };
 

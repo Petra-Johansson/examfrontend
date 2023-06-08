@@ -76,30 +76,34 @@ const UserCard: React.FC = () => {
         ))}
       <h2>Hej {user.name}, här är din profil</h2>
       <div className={styles.card} key={user.id}>
-        <img
-          src={user.image}
-          alt="Profile picture"
-          className={styles.profilePic}
-        />
-        <h3>{user.name}</h3>
-        <p className={styles.contrNumb}>
-          Contract number: {user.contractNumber}
-        </p>
-
-        <div className={styles.contactInfo}>
-          <h4>Contact information: </h4>
-          <p>
-            <FontAwesomeIcon icon={faPhone} /> <span>{user.phone}</span>
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faAt} /> <span>{user.email}</span>
-          </p>
+        <div className={styles.imageContainer}>
+          <img
+            src={user.image}
+            alt="Profile picture"
+            className={styles.profilePic}
+          />
         </div>
-        <button className={styles.updateBtn} onClick={handleModal}>
-          Uppdatera information
-        </button>
+        <div className={styles.infoContainer}>
+          <h3>{user.name}</h3>
+          <p className={styles.contrNumb}>
+            Contract number: {user.contractNumber}
+          </p>
+
+          <div className={styles.contactInfo}>
+            <h4>Contact information: </h4>
+            <p>
+              <FontAwesomeIcon icon={faPhone} /> <span>{user.phone}</span>
+            </p>
+            <p>
+              <FontAwesomeIcon icon={faAt} /> <span>{user.email}</span>
+            </p>
+          </div>
+        </div>
         <UserUpdateForm isOpen={modal} isClosed={handleCloseModal} />
       </div>
+      <button className={styles.updateBtn} onClick={handleModal}>
+        Uppdatera information
+      </button>
     </>
   );
 };

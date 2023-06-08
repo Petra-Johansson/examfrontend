@@ -13,13 +13,13 @@ export default function Page() {
   if (isLoading) {
     return <Loading />;
   }
-
+  /*
   useEffect(() => {
     if (!authState.isLoggedIn) {
       router.push("/");
     }
   }, [authState.isLoggedIn, router]);
-
+*/
   return (
     <section className={styles.main}>
       <UserCard />

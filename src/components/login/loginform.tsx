@@ -28,7 +28,7 @@ function LoginForm() {
     try {
       await login(email, password);
       // Login was successful
-      router.push("/account/user"); // redirect to dashboard
+      router.push("/account/user");
     } catch (error: any) {
       console.log(error.response.data.message);
       if (error.response.data.message.includes("email" || "password")) {
