@@ -59,7 +59,7 @@ const PostForm = ({ isOpen, isClosed }: PostFormProps) => {
             <p>{descriptionError}</p>
           </div>
         )}
-        <h3>LÄgg till en post till flödet</h3>
+        <h3>Lägg till en post till flödet</h3>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
@@ -73,7 +73,7 @@ const PostForm = ({ isOpen, isClosed }: PostFormProps) => {
             value={description}
             required
             onChange={handleDescription}
-            placeholder="Skriv ditt meddalnde här!"
+            placeholder="Skriv ditt meddelande här!"
           />
           <button type="submit" onClick={isClosed} id={styles.submit}>
             Skicka post!

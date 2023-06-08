@@ -20,7 +20,14 @@ const SortPosts: React.FC<SortPostsProps> = ({ posts, setPosts }) => {
     setPosts(sortedPosts);
   };
 
-  return <button onClick={handleSort}>Sortera på datum</button>;
+  return (
+    <button
+      style={{ backgroundColor: "var(--blue)", color: "var(--light)" }}
+      onClick={handleSort}
+    >
+      Sortera på datum
+    </button>
+  );
 };
 
 export default SortPosts;

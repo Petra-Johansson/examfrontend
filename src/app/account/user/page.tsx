@@ -3,15 +3,22 @@ import styles from "../page.module.css";
 import Link from "next/link";
 import UserCard from "@/components/user/user";
 import { useAuth } from "@/context/AuthContext";
-import RedirectToLogin from "@/components/redirect";
 import Loading from "@/app/loading";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page() {
   const { authState, isLoading } = useAuth();
-
+  const router = useRouter();
   if (isLoading) {
     return <Loading />;
   }
+
+  useEffect(() => {
+    if (!authState.isLoggedIn) {
+      router.push("/");
+    }
+  }, [authState.isLoggedIn, router]);
 
   return (
     <section className={styles.main}>

@@ -33,17 +33,13 @@ export default function Page() {
   const handleCloseModal = () => {
     setModal(false);
   };
-  /*
-  const { authState } = useAuth();
 
-  if (!authState.isLoggedIn) {
-    return <RedirectToLogin />;
-  }
-*/
   return (
     <>
       <div className={styles.actions}>
-        <button onClick={handleModal}>Lägg till ny post</button>
+        <button id={styles.addBtn} onClick={handleModal}>
+          Lägg till ny post
+        </button>
         <PostForm isOpen={modal} isClosed={handleCloseModal} />
         <SortPosts posts={posts} setPosts={setPosts} />
       </div>

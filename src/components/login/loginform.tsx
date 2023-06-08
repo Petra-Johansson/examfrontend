@@ -41,7 +41,7 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <h2>Logga in</h2>
+      <h2 className={styles.formHeader}>Logga in</h2>
 
       {error && (
         <div className={styles.errorMessage}>

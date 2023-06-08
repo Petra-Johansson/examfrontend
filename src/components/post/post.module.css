@@ -98,6 +98,18 @@
 .icon {
   color: var(--contrast);
 }
+
+@media screen and (min-width: 500px) {
+  .modalContent {
+    width: 50%;
+  }
+  .modalContent h3 {
+    margin: 20px 0;
+  }
+  .form {
+    width: 60%;
+  }
+}
 /*
 
 */

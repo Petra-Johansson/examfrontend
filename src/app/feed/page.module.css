@@ -5,16 +5,24 @@
 .heading {
   text-align: center;
 }
+.actions #addBtn {
+  background-color: var(--contrast);
+  color: var(--light);
+}
 
 .actions {
   display: flex;
   justify-content: space-between;
 }
+
+.actions button {
+  font-size: 0.8em;
+}
 @media screen and (min-width: 900px) {
   .feed {
-    width: 75vw;
+    width: 60vw;
   }
-  .actions > button {
+  .actions button {
     padding: 2%;
   }
 }

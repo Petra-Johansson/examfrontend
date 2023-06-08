@@ -1,15 +1,18 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./header.module.css";
 import { useAuth } from "@/context/AuthContext";
 
 const Navbar = () => {
-  const { authState } = useAuth();
+  const { authState, logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+  };
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <Link href="/">HOWDIEDODII</Link>
+        <Link href="/">Grannar emellan</Link>
       </div>
       <nav className={styles.navbar}>
         <ul className={styles.navlist}>
@@ -18,33 +21,29 @@ const Navbar = () => {
           </li>
 
           <li className={`${styles.navItem} ${styles.dropdown}`}>
-            <Link href="/account/user" className={styles.account}>
+            <button className={`${styles.navItem} ${styles.dropBtn}`}>
               Konto
-            </Link>
+            </button>
             <ul className={styles.dropdownItems}>
               <li className={styles.navItem}>
-                <Link href="/account/user" className={styles.onHover}>
-                  Profil
-                </Link>
+                <Link href="/account/user">Profil</Link>
               </li>
               <li className={styles.navItem}>
-                <Link href="/feed" className={styles.onHover}>
-                  Nyhetsflödet
-                </Link>
+                <Link href="/feed">Nyhetsflödet</Link>
               </li>
               <li className={styles.navItem}>
                 {authState?.isLoggedIn ? (
-                  <Link href="/account/logout">Logga ut </Link>
+                  <Link href="/" onClick={handleLogout}>
+                    Logga ut
+                  </Link>
                 ) : (
-                  <Link href="/account/login">Logga in </Link>
+                  <Link href="/account/login">Logga in</Link>
                 )}
               </li>
             </ul>
           </li>
           <li className={styles.navItem}>
-            <Link href="/about" className={styles.onHover}>
-              Om oss
-            </Link>
+            <Link href="/about">Om oss</Link>
           </li>
         </ul>
       </nav>

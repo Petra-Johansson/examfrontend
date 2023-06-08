@@ -82,7 +82,9 @@ const UserCard: React.FC = () => {
           className={styles.profilePic}
         />
         <h3>{user.name}</h3>
-        <p>Contract number: {user.contractNumber}</p>
+        <p className={styles.contrNumb}>
+          Contract number: {user.contractNumber}
+        </p>
 
         <div className={styles.contactInfo}>
           <h4>Contact information: </h4>

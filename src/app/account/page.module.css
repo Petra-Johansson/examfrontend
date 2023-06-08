@@ -1,56 +1,50 @@
 .main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main h2 {
-    text-align: center;
-    margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-
 .blueBtn {
-    background-color: var(--blue);
+  background-color: var(--blue);
 }
 
 .redBtn {
-    background-color: var(--red);
+  background-color: var(--red);
 }
 
 .linkSection {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    width: 60%;
-    margin: 20px auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  width: 60%;
+  margin: 20px auto;
 }
 
 .profileLinks {
-    margin-bottom: 20px;
-    color: var(--light);
+  margin-bottom: 20px;
+  color: var(--light);
 }
 
 @media screen and (min-width: 600px) {
+  .updateBtn {
+    width: 30%;
+    margin: 0 auto;
+    padding: 1%;
+  }
 
-    .card {
-        margin: 0 auto;
-        width: 80%;
-    }
+  .linkSection {
+    margin-top: 60px;
+    width: 50%;
+  }
 
-    .updateBtn {
-        width: 30%;
-        margin: 0 auto;
-        padding: 1%;
-    }
-
-    .linkSection {
-        margin-top: 60px;
-        width: 50%;
-    }
-
-    .profileLinks,
-    .updateBtn {
-        font-size: 1.2em;
-    }
+  .profileLinks,
+  .updateBtn {
+    font-size: 1.2em;
+  }
 }

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
 :root {
   --light: #faf4e8;
   --dark: #4d4d4d;
@@ -11,6 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -23,12 +25,12 @@ a {
   color: var(--light);
   cursor: pointer;
 }
-button{
+button {
   cursor: pointer;
 }
 
 li {
-  list-style: none
+  list-style: none;
 }
 
 input,
@@ -38,9 +40,9 @@ button {
   margin-bottom: 20px;
   border-radius: 10px;
   border: none;
-  box-shadow:0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-h3, h4 {
+h3,
+h4 {
   color: var(--dark);
 }
-
