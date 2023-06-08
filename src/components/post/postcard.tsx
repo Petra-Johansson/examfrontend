@@ -39,11 +39,11 @@ const PostCard: React.FC<PostCardProps> = ({ posts }) => {
     };
     fetchPosts();
   }, []);
-
+  /*
   useEffect(() => {
     setPostItems(posts); // Update postItems when posts prop changes
   }, [posts]);
-
+*/
   const handleLike = (postId: string) => async () => {
     try {
       await likePost(postId);

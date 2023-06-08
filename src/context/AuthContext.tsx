@@ -207,6 +207,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         {},
         { withCredentials: true }
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
